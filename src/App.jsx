@@ -1,5 +1,12 @@
+import React from "react";
+import Products from "./components/Products/products";
+
 function App() {
-  return 
+  return (
+    <>
+      <Products/>
+    </>
+  );
 }
 
-export default App
+export default App;
