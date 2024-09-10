@@ -32,13 +32,29 @@ app.post("/register", (req, res) => {
   const { name, code, description, price } = req.body;
 
   let SQL =
-    "INSERT INTO products ( name, code, description, price) VALUES (?,?,?,?)";
+    "INSERT INTO products (name, code, description, price) VALUES (?,?,?,?)";
 
-  connection.query(SQL, [name, code, description, price], (err, res) => {
+  connection.query(SQL, [name, code, description, price], (err, result) => {
     if (err) {
-      res.send(err);
+      res.status(500).send(err);
     } else {
-      res.status(500).send({ message: "Erro ao cadastrar produto" });
+      res.status(201).send({
+        message: "Produto cadastrado com sucesso",
+        productId: result.insertId,
+      });
+    }
+  });
+});
+
+app.get("/getCards", (req, res) => {
+  let SQL = "SELECT * FROM nunes_sports.products";
+
+  connection.query(SQL, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send({ error: "Erro ao consultar o banco de dados" });
+    } else {
+      res.status(200).send(result);
     }
   });
 });
