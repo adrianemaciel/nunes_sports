@@ -1,8 +1,46 @@
-# React + Vite
+# Nunes Sports
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um sistema para exibição, edição e deleção dos produtos vendidos pela companhia.
 
-Currently, two official plugins are available:
+## Frameworks e Bibliotecas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> Front-end
+
+- ReactJs
+- Axios
+
+> Back-end
+
+- MySQL
+- Express
+- Nodemon
+- Cors
+
+## Inicialização do Projeto
+
+> Front-end
+
+```
+npm install
+npm run dev
+```
+
+> Back-end
+
+```
+cd server
+npm install
+npm run dev
+```
+
+## Funcionalidades
+
+- Criar produtos
+- Editar produtos
+- Atualizar produtos
+- Deletar produtos
+
+## Contato
+
+- E-mail: adrianemaciel.developer@gmail.com
+- Linkedin: https://linkedin.com/in/adrianemacieldeveloper/
