@@ -12,17 +12,6 @@ const Products = () => {
     price: "",
   });
 
-  const fetchProducts = () => {
-    axios
-      .get("http://localhost:3000/products")
-      .then((res) => setProducts(res.data))
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewProduct({ ...newProduct, [name]: value });
@@ -45,6 +34,17 @@ const Products = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  const fetchProducts = () => {
+    axios
+      .get("http://localhost:3000/products")
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <div>
@@ -93,7 +93,9 @@ const Products = () => {
           onChange={handleInputChange}
         />
 
-        <button type="submit">Adicionar produto</button>
+        <button type="submit" onClick={handleSubmit}>
+          Adicionar produto
+        </button>
       </form>
 
       <table>
