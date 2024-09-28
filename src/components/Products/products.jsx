@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./products.css";
+import "../../assets/styles/products.css";
+import Modal from "./modal";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -11,6 +12,10 @@ const Products = () => {
     description: "",
     price: "",
   });
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [modalType, setModalType] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -38,7 +43,41 @@ const Products = () => {
   const fetchProducts = () => {
     axios
       .get("http://localhost:3000/products")
-      .then((res) => setProducts(res.data))
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleEdit = (product) => {
+    setSelectedProduct(product);
+    setModalType("edit");
+    setIsModalOpen(true);
+  };
+
+  const handleDelete = (product) => {
+    setSelectedProduct(product);
+    setModalType("delete");
+    setIsModalOpen(true);
+  };
+
+  const handleConfirmEdit = (id, product) => {
+    axios
+      .put(`http://localhost:3000/products/${id}`, product)
+      .then((res) => {
+        fetchProducts();
+        setIsModalOpen(false);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleConfirmDelete = (id) => {
+    axios
+      .delete(`http://localhost:3000/products/${id}`)
+      .then(() => {
+        fetchProducts();
+        setIsModalOpen(false);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -117,14 +156,31 @@ const Products = () => {
                 <td>{product.description}</td>
                 <td>{product.price}</td>
                 <td>
-                  <button>Editar</button>
-                  <button className="button-delete">Deletar</button>
+                  <button onClick={() => handleEdit(product)}>Editar</button>
+                  <button
+                    className="button-delete"
+                    onClick={() => handleDelete(product)}
+                  >
+                    Deletar
+                  </button>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        product={selectedProduct}
+        type={modalType}
+        onConfirm={(updatedProduct) =>
+          modalType === "edit"
+            ? handleConfirmEdit(selectedProduct.id, updatedProduct)
+            : handleConfirmDelete(selectedProduct.id)
+        }
+      />
     </div>
   );
 };
