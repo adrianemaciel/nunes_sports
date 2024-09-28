@@ -39,22 +39,43 @@ app.post("/register", (req, res) => {
       res.status(500).send(err);
     } else {
       res.status(201).send({
-        message: "Produto cadastrado com sucesso",
-        productId: result.insertId,
+        message: "Produto cadastrado com sucesso.",
       });
     }
   });
 });
 
-app.get("/getCards", (req, res) => {
-  let SQL = "SELECT * FROM nunes_sports.products";
+app.put("/products/:id", (req, res) => {
+  const { id } = req.params;
+  const { name, code, description, price } = req.body;
+
+  if (!name || !code || !description || !price) {
+    return res
+      .status(400)
+      .send({ message: "Todos os campos devem ser preenchidos!" });
+  }
+
+  let SQL = `UPDATE nunes_sports.products SET name= "${name}", code = "${code}", description = "${description}", price = ${price} WHERE id = ${id} `;
 
   connection.query(SQL, (err, result) => {
     if (err) {
-      console.error(err);
-      res.status(500).send({ error: "Erro ao consultar o banco de dados" });
+      res.status(500).send(err);
     } else {
-      res.status(200).send(result);
+      res.status(200).send({ message: "Produto atualizado com sucesso." });
+    }
+  });
+});
+
+app.delete("/products/:id", (req, res) => {
+  const { id } = req.params;
+
+  let SQL = `DELETE FROM nunes_sports.products WHERE id = ${id}`;
+
+  connection.query(SQL, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send({ message: "Produto excluído com sucesso." });
     }
   });
 });
