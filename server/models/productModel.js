@@ -1,4 +1,4 @@
-const db = require("../config");
+const db = require("../db");
 
 exports.getAllProducts = (callback) => {
   const SQL = "SELECT * FROM products";
