@@ -1,7 +1,11 @@
+.content {
+  padding: 20px;
+}
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
+  overflow-x: auto;
 }
 
 table th,
@@ -22,7 +26,8 @@ table tbody tr:hover {
 button {
   background-color: #007bff;
   color: white;
-  margin-inline: 5px 0px;
+  margin-inline: 5px 0;
+  margin: 5px;
   padding: 0.5rem 1rem;
   border: none;
   cursor: pointer;
@@ -31,6 +36,12 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-delete {
@@ -90,6 +101,7 @@ form button:hover {
   padding: 20px;
   border-radius: 8px;
   width: 400px;
+  max-width: 90%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
 }
@@ -116,11 +128,24 @@ form button:hover {
   border-radius: 4px;
 }
 
+.modal-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-button-save,
+.modal-button-cancel,
+.modal-button-delete {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+
 .modal-button-save {
   background-color: #28a745;
   color: white;
-  margin-bottom: 10px;
-  padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -133,8 +158,6 @@ form button:hover {
 .modal-button-delete {
   background-color: #dc3545;
   color: white;
-  margin-top: 10px;
-  padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -147,8 +170,6 @@ form button:hover {
 .modal-button-cancel {
   background-color: transparent;
   color: #6c757d;
-  margin-top: 10px;
-  padding: 10px 20px;
   border: 1px solid #6c757d;
   border-radius: 4px;
   cursor: pointer;
@@ -164,7 +185,6 @@ form button:hover {
   color: white;
   text-align: center;
   padding: 1rem;
-  position: fixed;
   bottom: 0;
   width: 100%;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
@@ -186,4 +206,72 @@ form button:hover {
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+    width: 100%;
+  }
+
+  table th {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  table tr {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+
+  table td {
+    display: block;
+    position: relative;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .action-buttons {
+    justify-content: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    padding: 0 1rem;
+  }
+
+  form input[type="text"],
+  form input[type="number"],
+  form textearea {
+    font-size: 0.9rem;
+  }
+
+  button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .action-buttons {
+    gap: 0.5rem;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 90%;
+  }
 }

@@ -1,3 +1,5 @@
+import "../../assets/styles/products.css";
+
 const Footer = () => {
   return (
     <footer className="footer">

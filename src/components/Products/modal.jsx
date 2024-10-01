@@ -46,6 +46,7 @@ const Modal = ({ isOpen, onClose, product = {}, onConfirm, type }) => {
               type="text"
               id="name"
               name="name"
+              autoComplete="name"
               value={editTableProduct.name}
               onChange={handleInputChange}
             />
@@ -55,6 +56,7 @@ const Modal = ({ isOpen, onClose, product = {}, onConfirm, type }) => {
               type="text"
               id="code"
               name="code"
+              autoComplete="off"
               value={editTableProduct.code}
               onChange={handleInputChange}
             />
@@ -64,6 +66,7 @@ const Modal = ({ isOpen, onClose, product = {}, onConfirm, type }) => {
               type="text"
               id="description"
               name="description"
+              autoComplete="off"
               value={editTableProduct.description}
               onChange={handleInputChange}
             />
@@ -73,27 +76,39 @@ const Modal = ({ isOpen, onClose, product = {}, onConfirm, type }) => {
               type="number"
               id="price"
               name="price"
+              autoComplete="off"
               value={editTableProduct.price}
               onChange={handleInputChange}
             />
-            <button className="modal-button-save" onClick={handleConfirmChange}>
-              Salvar
-            </button>
+
+            <div className="modal-buttons-container">
+              <button
+                className="modal-button-save"
+                onClick={handleConfirmChange}
+              >
+                Salvar
+              </button>
+              <button className="modal-button-cancel" onClick={onClose}>
+                Cancelar
+              </button>
+            </div>
           </div>
         ) : (
           <div>
             <p>Tem certeza que deseja deletar o produto "{product.name}"?</p>
-            <button
-              className="modal-button-delete"
-              onClick={() => onConfirm(product.id)}
-            >
-              Deletar
-            </button>
+            <div className="modal-buttons-container">
+              <button
+                className="modal-button-delete"
+                onClick={() => onConfirm(product.id)}
+              >
+                Deletar
+              </button>
+              <button className="modal-button-cancel" onClick={onClose}>
+                Cancelar
+              </button>
+            </div>
           </div>
         )}
-        <button className="modal-button-cancel" onClick={onClose}>
-          Cancelar
-        </button>
       </div>
     </div>
   );

@@ -86,7 +86,7 @@ const Products = () => {
   }, []);
 
   return (
-    <div>
+    <div className="content">
       <h1>Produtos</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Nome:</label>
@@ -155,7 +155,7 @@ const Products = () => {
                 <td>{product.code}</td>
                 <td>{product.description}</td>
                 <td>{product.price}</td>
-                <td>
+                <td className="action-buttons">
                   <button onClick={() => handleEdit(product)}>Editar</button>
                   <button
                     className="button-delete"
