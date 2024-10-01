@@ -25,7 +25,7 @@ const Products = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/register", newProduct)
+      .post("http://localhost:3000/api/products", newProduct)
       .then((res) => {
         setProducts([...products, res.data]);
         fetchProducts();
@@ -42,7 +42,7 @@ const Products = () => {
 
   const fetchProducts = () => {
     axios
-      .get("http://localhost:3000/products")
+      .get("http://localhost:3000/api/products")
       .then((res) => {
         setProducts(res.data);
       })
@@ -63,7 +63,7 @@ const Products = () => {
 
   const handleConfirmEdit = (id, product) => {
     axios
-      .put(`http://localhost:3000/products/${id}`, product)
+      .put(`http://localhost:3000/api/products/${id}`, product)
       .then((res) => {
         fetchProducts();
         setIsModalOpen(false);
@@ -73,7 +73,7 @@ const Products = () => {
 
   const handleConfirmDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/products/${id}`)
+      .delete(`http://localhost:3000/api/products/${id}`)
       .then(() => {
         fetchProducts();
         setIsModalOpen(false);
