@@ -25,3 +25,7 @@ dist-ssr
 
 # Ignore environment variables file
 .env
+
+# Ignore build folder
+dist/
+
