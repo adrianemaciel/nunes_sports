@@ -4,7 +4,14 @@ const app = express();
 const cors = require("cors");
 const productRoutes = require("./routes/productRoutes");
 
-app.use(cors({ origin: "https://nunes-sports-store.netlify.app" }));
+app.use(
+  cors({
+    origin: [
+      "https://nunes-sports-store.netlify.app",
+      "https://nunes-sports-kappa.vercel.app",
+    ],
+  })
+);
 app.use(express.json());
 
 app.use("/api", productRoutes);
