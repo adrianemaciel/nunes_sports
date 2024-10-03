@@ -1,6 +1,6 @@
 const ProductModel = require("../models/productModel");
 
-exports.listProducts = (req, res) => {
+exports.getProducts = (req, res) => {
   ProductModel.getAllProducts((err, products) => {
     if (err) {
       return res.status(500).json({ error: err.message });

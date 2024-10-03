@@ -10,8 +10,12 @@ app.use(
       "https://nunes-sports-store.netlify.app",
       "https://nunes-sports-kappa.vercel.app",
     ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
+
 app.use(express.json());
 
 app.use("/api", productRoutes);

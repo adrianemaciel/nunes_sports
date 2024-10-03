@@ -25,10 +25,7 @@ const Products = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(
-        "http://https://nunes-sports-kappa.vercel.app/api/products",
-        newProduct
-      )
+      .post("https://nunes-sports-kappa.vercel.app/api/products", newProduct)
       .then((res) => {
         setProducts([...products, res.data]);
         fetchProducts();
