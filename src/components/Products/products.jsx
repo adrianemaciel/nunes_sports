@@ -25,7 +25,10 @@ const Products = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/api/products", newProduct)
+      .post(
+        "http://https://nunes-sports-kappa.vercel.app/api/products",
+        newProduct
+      )
       .then((res) => {
         setProducts([...products, res.data]);
         fetchProducts();
@@ -42,7 +45,7 @@ const Products = () => {
 
   const fetchProducts = () => {
     axios
-      .get("http://localhost:3000/api/products")
+      .get("http://https://nunes-sports-kappa.vercel.app/api/products")
       .then((res) => {
         setProducts(res.data);
       })
@@ -63,7 +66,10 @@ const Products = () => {
 
   const handleConfirmEdit = (id, product) => {
     axios
-      .put(`http://localhost:3000/api/products/${id}`, product)
+      .put(
+        `http://https://nunes-sports-kappa.vercel.app/api/products/${id}`,
+        product
+      )
       .then((res) => {
         fetchProducts();
         setIsModalOpen(false);
@@ -73,7 +79,7 @@ const Products = () => {
 
   const handleConfirmDelete = (id) => {
     axios
-      .delete(`http://localhost:3000/api/products/${id}`)
+      .delete(`http://https://nunes-sports-kappa.vercel.app/api/products/${id}`)
       .then(() => {
         fetchProducts();
         setIsModalOpen(false);
