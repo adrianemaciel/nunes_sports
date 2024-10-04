@@ -8,7 +8,7 @@ app.use(
   cors({
     origin: [
       "https://nunes-sports-store.netlify.app",
-      "https://nunes-sports-kappa.vercel.app",
+      "https://nunes-sports-backend.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
