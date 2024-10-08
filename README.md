@@ -1,6 +1,10 @@
 # Nunes Sports
 
-Um sistema para exibição, edição e deleção dos produtos vendidos pela companhia.
+Um sistema completo de gerenciamento de produtos esportivos, desenvolvido com Node.js, React e MySQL. Permite a exibição, edição e deleção de produtos de forma eficiente.
+
+<p>
+    <img src="docs/nunes-sports-view.gif">
+</p>
 
 ## Frameworks e Bibliotecas
 
