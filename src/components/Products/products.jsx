@@ -6,7 +6,6 @@ import Modal from "./modal";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({
-    id: "",
     name: "",
     code: "",
     description: "",
@@ -27,10 +26,8 @@ const Products = () => {
     axios
       .post("https://nunes-sports-backend.vercel.app/api/products", newProduct)
       .then((res) => {
-        setProducts([...products, res.data]);
         fetchProducts();
         setNewProduct({
-          id: "",
           name: "",
           code: "",
           description: "",
@@ -135,9 +132,7 @@ const Products = () => {
           onChange={handleInputChange}
         />
 
-        <button type="submit" onClick={handleSubmit}>
-          Adicionar produto
-        </button>
+        <button type="submit">Adicionar produto</button>
       </form>
 
       <table>
