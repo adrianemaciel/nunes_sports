@@ -35,12 +35,12 @@ O Nunes Sports Store é uma aplicação de gerenciamento de produtos voltada par
 > Migração do MySQL para o Supabase:
 
 - Desafio: A migração para um banco de dados serverless exigiu a adaptação de queries e a implementação de novas políticas de segurança no banco.
-- Solução: Refatoramos o código para usar o Supabase, implementamos políticas de inserção e seleção de dados, e configuramos o id dos produtos como auto incremento.
+- Solução: Refatoração do código para usar o Supabase, implementação de políticas de inserção e seleção de dados, e configuração do id dos produtos como auto incremento.
 
 > Problemas com CORS:
 
-- Desafio: Durante a integração do frontend e backend, encontramos problemas com bloqueios CORS.
-- Solução: Ajustamos as permissões no middleware CORS no backend para aceitar requisições vindas dos domínios Netlify e Vercel.
+- Desafio: Durante a integração do frontend e backend, retornou problemas com bloqueios CORS.
+- Solução: Ajuste das permissões no middleware CORS no backend para aceitar requisições vindas dos domínios Netlify e Vercel.
 
 ## Inicialização do Projeto
 
